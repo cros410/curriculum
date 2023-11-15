@@ -97,10 +97,10 @@ para facilitar su consulta y análisis.
 cargue la información de los archivos de texto a la base
 de datos:
 
-    En el caso de Java
+    En el caso de NodeJs
 
     ```bash
-    java UploadGPSData.java <path-to-files>
+    node upload-gps-data.js <path-to-files>
     --type=taxis|trajectories
     --dbname=<dbname>
     --host=<hostname>
@@ -243,14 +243,14 @@ menos una compañera.
 
 ## 5. Stack de tecnologías
 
-* [Spring Boot](https://spring.io/projects/spring-boot/): para
-crear aplicaciones Java
-* [Spring Boot Test](https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.testing.spring-boot-applications):
-para pruebas de integración.
-* [JUnit](https://junit.org/junit5/): para pruebas unitarias.
-* [Hibernate](https://docs.spring.io/spring-framework/reference/data-access/orm/hibernate.html):
-cómo [ORM](https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping)
+* [Express](https://expressjs.com/en/starter/hello-world.html):
+como librería para implementar un servidor HTTP.
+* [Prisma](https://www.prisma.io/): cómo
+[ORM](https://en.wikipedia.org/wiki/Object%E2%80%93relational_mapping)
 para facilitar consultas a la base de datos.
+* [Jest](jestjs.io/): como framework de pruebas unitarias.
+* [Superagent](https://www.npmjs.com/package/superagent): como
+framework de pruebas e2e.
 * [Postgresql](https://www.postgresql.org/): como base de datos.
 
 ## 6. Boilerplate
