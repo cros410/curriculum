@@ -49,8 +49,6 @@ En la carpeta `taxis` encontrarás el archivo `taxis.txt`. En cada línea
 del archivo, encontrarás el identificador (ID) y placa de un taxi. La
 información esta separada entre sí por comas.
 
-![Archivo taxis.txt](./docs/first-10-lines-taxis-txt.png "Archivo taxis.txt")
-
 En la carpeta `trajectories` encontrarás 10.357 archivos con extensión
 txt. Cada archivo contiene las ubicaciones de un taxi. El nombre del archivo
 corresponde al identificador del taxi. Por ejemplo, el archivo `9557.txt`
@@ -58,8 +56,6 @@ contiene las ubicaciones del taxi con identificador 9557. En cada línea de
 estos archivos, encontrarás el identificador del taxi (ID), la fecha y hora,
 latitud y longitud de la ubicación. En una línea, la información está
 separada entre sí por comas.
-
-![Archivo 9557.txt](./docs/first-10-lines-9557-txt.png "Archivo 9557.txt")
 
 Nota: La información de taxis y ubicaciones ha sido extraída del proyecto
 [T-Drive: Driving Directions based on Taxi Traces](https://shorturl.at/enBJW)
@@ -177,3 +173,110 @@ menos una compañera.
 * El código _endpoint_ debe contar con test unitarios y e2e.
 
 ***
+
+## [Historia de usuario 9] Endpoint para administrar Taxis
+
+Yo como clienta de la API REST requiero un _endpoint_ para
+crear, actualizar y eliminar trayectorias de taxis
+
+### Criterios de aceptación
+
+* Un endpoint acepta los datos necesario para crear una trayectoria.
+```json
+{
+  "taxi_id": "8935",
+  "date": "2024-02-02 14:10:29",
+  "latitude": 116.44297,
+  "longitude": 39.82675
+}
+```
+* Un endpoint recibe un identificador de trayectoria junto con la data
+para poder actualizar la información. Solo lo acepta si existe.
+* Un endpoint recibe un identificador de trayectoria y la elimina.
+Solo lo acepta si existe.
+
+### Definición de terminado
+
+* Se cuenta con una documentación en [Swagger](https://swagger.io/)
+para el _endpoint_ desarrollado especificando
+[método HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods),
+url, parámetros,
+[encabezados](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers),
+[códigos HTTP de respuesta](https://shorturl.at/bdegB)
+y
+[cuerpo](https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages).
+* El código del _endpoint_ debe recibir _code review_ de al
+menos una compañera.
+* El código _endpoint_ debe estar cargado en un repositorio de Github.
+* El código _endpoint_ debe contar con test unitarios y e2e.
+
+***
+
+## [Historia de usuario 10] Endpoints de autenticatión
+
+Yo, como cliente de la API REST, requiero endpoints para gestionar
+la autenticación en el sistema.
+
+### Criterios de aceptación
+
+* Un endpoint para registrar un nuevo usuario, con la siguiente información:
+```json
+{
+  "email": "usuario@example.com",
+  "password": "contraseña_segura123"
+}
+```
+* Un endpoint para realizar el inicio de sesión, con credenciales válidas.
+Debe devolver un token JWT para manejar la sesión.
+
+Request
+```json
+{
+  "username": "ejemplo_usuario",
+  "password": "contraseña_segura123"
+}
+```
+Response
+```json
+{
+  "accessToken": "xxxxxxxxxxxx.xxxxxxxxxxxx.xxxxxxxxxxxx"
+}
+```
+
+### Definición de terminado
+
+* Se cuenta con una documentación en [Swagger](https://swagger.io/)
+para el _endpoint_ desarrollado especificando
+[método HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods),
+url, parámetros,
+[encabezados](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers),
+[códigos HTTP de respuesta](https://shorturl.at/bdegB)
+y
+[cuerpo](https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages).
+* El código del _endpoint_ debe recibir _code review_ de al
+menos una compañera.
+* El código _endpoint_ debe estar cargado en un repositorio de Github.
+* El código _endpoint_ debe contar con test unitarios y e2e.
+
+
+***
+
+## [Historia de usuario 11] Middleware para verificar la autenticación
+
+Yo, como desarrollador de la API REST, requiero un middleware que verifique la autenticación de las solicitudes entrantes.
+
+### Criterios de aceptación
+
+* Se implementa un middleware que verifica la existencia y validez del token JWT en las solicitudes.
+* Si el token es válido, la solicitud se procesa normalmente; de lo contrario, se responde con un código de error de autenticación.
+* El middleware se integra en el flujo de manejo de solicitudes antes de llegar a los endpoints protegidos.
+* El middleware debe proteger todas los endpoint anteriores.
+
+### Definición de terminado
+
+* Se realiza una revisión de código (_code review_) por al menos una compañera.
+* El código del middleware se encuentra en un repositorio de GitHub.
+* Se proporcionan pruebas unitarias y de extremo a extremo (_e2e_) para garantizar la correcta funcionalidad del middleware de verificación de autenticación.
+
+
+
